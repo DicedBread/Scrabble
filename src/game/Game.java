@@ -13,20 +13,22 @@ public class Game {
     List<Tile> players;
     Viewer viewer;
 
-    Node placed = null;
+    PlacedNode placed = null;
 
     public Game(Viewer v){
         this.viewer = v;
         tiles = loadTile(new File("/src/data/letters.csv"));
-        
+        placed = testGraph();
+        v.repaint(placed);
     }
 
-
-    public Node testGraph(){
-        return new Node(new Tile('e', 7), new Coordinate(7, 7));
-        
+    public PlacedNode testGraph(){
+        return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
     }
 
+    public List<Player> makePlayers(){
+        // TODO make the players do shit   
+    }
 
 
     /** loads letters to list of playable tiles
@@ -56,8 +58,4 @@ public class Game {
         }catch(Exception e) { System.out.println(e); }
         return out;
     }
-
-
-
-
 }

@@ -2,15 +2,12 @@ package game;
 
 import java.util.*;
 
-
-
-public class Node implements Iterable<Node> {
+public class PlacedNode implements Iterable<PlacedNode> {
 
     private Tile tile;
-    
     private Coordinate coord;
 
-    private Map<Dir, Node> neighbors; 
+    private Map<Dir, PlacedNode> neighbors = new HashMap<>(); 
     
     enum Dir{
         TOP,
@@ -19,7 +16,7 @@ public class Node implements Iterable<Node> {
         LEFT
     }
     
-    public Node(Tile t, Coordinate c){
+    public PlacedNode(Tile t, Coordinate c){
         tile = t;
         coord = c;
     }
@@ -27,13 +24,13 @@ public class Node implements Iterable<Node> {
     public Tile tile() { return tile; }
     public Coordinate coord() { return coord; }
         
-    public Node getNeighbor(Dir d){
+    public PlacedNode getNeighbor(Dir d){
         return neighbors.get(d);
     }
     
     @Override
-    public Iterator<Node> iterator() {
-        return new Iterator<Node>() {
+    public Iterator<PlacedNode> iterator() {
+        return new Iterator<PlacedNode>() {
             int c = 0;
             Dir[] d = Dir.values();
 
@@ -43,9 +40,14 @@ public class Node implements Iterable<Node> {
             }
 
             @Override
-            public Node next() {
+            public PlacedNode next() {
                 return neighbors.get(d[c++]);
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        return tile.toString() + " " + coord.toString();
     }
 }
