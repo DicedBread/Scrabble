@@ -5,12 +5,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 import view.Viewer;
+import game.*;
 
 public class App{
 
     public static void main(String[] args) {
-        Viewer v = new Viewer();
-        
+        Game g = new Game(new Viewer());
     }
 
 }
