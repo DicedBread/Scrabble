@@ -8,33 +8,42 @@ import view.Viewer;
 import java.io.*;
 
 public class Game {
+
+    private final int PLAYER_COUNT = 4;
     
-    List<Tile> tiles;
-    List<Tile> players;
-    Viewer viewer;
+    private final Set<String> 
+
+    private List<Tile> tiles;
+    private List<Player> players;
+    private Viewer viewer;
+
+    private Map<Coordinate, PlacedNode> usedLoc = new HashMap<>(); 
 
     PlacedNode placed = null;
 
     public Game(Viewer v){
         this.viewer = v;
-        tiles = loadTile(new File("/src/data/letters.csv"));
+        this.players = List.of(new Player(), new Player(), new Player(), new Player());
+        tiles = loadTiles(new File("/src/data/letters.csv"));
+
         placed = testGraph();
         v.repaint(placed);
+    }
+
+    public boolean propsePlay(Play p){
+        // TODO play or somin idk
     }
 
     public PlacedNode testGraph(){
         return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
     }
-
-    public List<Player> makePlayers(){
-        // TODO make the players do shit   
-    }
+    
 
 
     /** loads letters to list of playable tiles
      *  csv format letter, points, count 
      */
-    private List<Tile> loadTile(File f){
+    private List<Tile> loadTiles(File f){
         List<Tile> out = new ArrayList<>();
         try{
             Scanner s = new Scanner(f);
