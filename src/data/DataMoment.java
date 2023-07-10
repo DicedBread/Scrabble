@@ -39,7 +39,7 @@ public class DataMoment{
                     bruh.add(e);
                 }
             }
-
+            s.close();
             o.close();
         } catch (Exception e) {
             System.out.println(e);

@@ -11,7 +11,7 @@ public class Game {
 
     private final int PLAYER_COUNT = 4;
     
-    private final Set<String> 
+    // private final Set<String> 
 
     private List<Tile> tiles;
     private List<Player> players;
@@ -30,9 +30,9 @@ public class Game {
         v.repaint(placed);
     }
 
-    public boolean propsePlay(Play p){
-        // TODO play or somin idk
-    }
+    // public boolean propsePlay(Play p){
+    //     // TODO play or somin idk
+    // }
 
     public PlacedNode testGraph(){
         return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
