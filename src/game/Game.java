@@ -3,6 +3,8 @@ package game;
 
 import java.util.*;
 
+import javax.script.ScriptEngine;
+
 import view.Viewer;
 
 import java.io.*;
@@ -11,7 +13,8 @@ public class Game {
 
     private final int PLAYER_COUNT = 4;
     
-    private final Set<String> 
+    
+    private final Set<String> words = loadWords("/src/data/words.csv");
 
     private List<Tile> tiles;
     private List<Player> players;
@@ -22,23 +25,41 @@ public class Game {
     PlacedNode placed = null;
 
     public Game(Viewer v){
+        
         this.viewer = v;
         this.players = List.of(new Player(), new Player(), new Player(), new Player());
         tiles = loadTiles(new File("/src/data/letters.csv"));
 
-        placed = testGraph();
+        // placed = 
         v.repaint(placed);
     }
 
-    public boolean propsePlay(Play p){
-        // TODO play or somin idk
-    }
-
-    public PlacedNode testGraph(){
-        return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
-    }
+    public void placePlay(Play p){
+        
+    }   
     
+    public boolean playIsValid(Play p){
+        // any other tile in path of play 
+    }
 
+    // public PlacedNode testGraph(){
+    //     return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
+    // }
+    
+    /** loads all valid words from file */
+    public Set<String> loadWords(String fN){
+        try{
+            File f = new File(fN);
+            Set<String> out = new HashSet<>();
+            Scanner s = new Scanner(f);
+            while(s.hasNextLine()){
+                out.add(s.nextLine());
+            }
+            s.close();
+            return Collections.unmodifiableSet(out);
+        }catch(Exception e) {System.out.println(e);}
+        return null;
+    }
 
     /** loads letters to list of playable tiles
      *  csv format letter, points, count 
