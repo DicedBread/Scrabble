@@ -27,28 +27,14 @@ public class Game {
         this.players = List.of(new Player(), new Player(), new Player(), new Player());
         tiles = loadTiles(new File("/src/data/letters.csv"));
 
-        placed = testGraph();
+        // placed = testGraph();
         v.repaint(placed);
     }
 
-    public void placePlay(Play p){
-        
+    public Play createPlay(){
+        return null;
     }   
     
-    public boolean playIsValid(Play p){
-        // any other tile in path of play 
-        return null;
-    }
-
-    // public PlacedNode testGraph(){
-    //     return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
-    // }
-
-    public PlacedNode testGraph(){
-        return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
-    }
-    
-
 
     /** loads letters to list of playable tiles
      *  csv format letter, points, count 
