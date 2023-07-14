@@ -20,8 +20,8 @@ public class Game {
 
     private Map<Coordinate, PlacedNode> usedLoc = new HashMap<>(); 
 
-    PlacedNode placed = null;
-
+    PlacedNode placed = null; 
+  
     public Game(Viewer v){
         this.viewer = v;
         this.players = List.of(new Player(), new Player(), new Player(), new Player());
