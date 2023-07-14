@@ -15,7 +15,7 @@ public class Game {
     // private final Set<String> 
 
     private List<Tile> tiles;
-    private List<Player> players;
+    private List<Player> players; 
     private Viewer viewer;
 
     private Map<Coordinate, PlacedNode> usedLoc = new HashMap<>(); 
@@ -37,7 +37,7 @@ public class Game {
     
     public boolean playIsValid(Play p){
         // any other tile in path of play 
-        return null
+        return null;
     }
 
     // public PlacedNode testGraph(){
