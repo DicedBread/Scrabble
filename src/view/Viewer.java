@@ -4,6 +4,9 @@ import game.*;
 
 import java.awt.*;
 import javax.swing.*;
+
+import Nodes.*;
+
 import java.util.*;
 
 
@@ -18,7 +21,7 @@ public class Viewer extends JFrame{
 
 
     JPanel canvas; 
-    PlacedNode n = null;
+    TileNode n = null;
 
     public Viewer(){
         getContentPane().setPreferredSize(new Dimension(W_WIDTH, W_HEIGHT));
@@ -49,23 +52,23 @@ public class Viewer extends JFrame{
         };
     }
 
-    public void repaint(PlacedNode n){
+    public void repaint(TileNode n){
         this.n = n;
         canvas.repaint();
     }
     
     /** recusivly draws tiles from placed graph */
-    public void drawTiles(Graphics g, PlacedNode node, Set<PlacedNode> visited){
+    public void drawTiles(Graphics g, TileNode node, Set<TileNode> visited){
         if(node == null) return;
         visited.add(node);
         drawTile(g, node);
-        for(PlacedNode n : node){
+        for(TileNode n : node){
             drawTiles(g, n, visited);
         }
     }
 
     /** draws tile in node object at node coords */
-    public void drawTile(Graphics g, PlacedNode n){
+    public void drawTile(Graphics g, TileNode n){
         int x, y; 
         x = n.coord().x();
         y = n.coord().y();

@@ -3,6 +3,7 @@ package game;
 
 import java.util.*;
 
+import Nodes.*;
 import view.Viewer;
 
 import java.io.*;
@@ -30,8 +31,17 @@ public class Game {
         v.repaint(placed);
     }
 
-    // public boolean propsePlay(Play p){
-    //     // TODO play or somin idk
+    public void placePlay(Play p){
+        
+    }   
+    
+    public boolean playIsValid(Play p){
+        // any other tile in path of play 
+        return null
+    }
+
+    // public PlacedNode testGraph(){
+    //     return new PlacedNode(new Tile('x', 7), new Coordinate(7, 7));
     // }
 
     public PlacedNode testGraph(){
