@@ -3,7 +3,7 @@ package game;
 
 import java.util.*;
 
-import Nodes.*;
+// import Nodes.*;
 import view.Viewer;
 
 import java.io.*;
@@ -18,9 +18,9 @@ public class Game {
     private List<Player> players; 
     private Viewer viewer;
 
-    private Map<Coordinate, PlacedNode> usedLoc = new HashMap<>(); 
+    // private Map<Coordinate, PlacedNode> usedLoc = new HashMap<>(); 
 
-    PlacedNode placed = null; 
+    // PlacedNode placed = null; 
   
     public Game(Viewer v){
         this.viewer = v;
@@ -28,7 +28,7 @@ public class Game {
         tiles = loadTiles(new File("/src/data/letters.csv"));
 
         // placed = testGraph();
-        v.repaint(placed);
+        // v.repaint(placed);
     }
 
     public Play createPlay(){
