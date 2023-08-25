@@ -21,9 +21,10 @@ public class Viewer extends JFrame{
 
 
     JPanel canvas; 
-    TileNode n = null;
+    Game game;
 
-    public Viewer(){
+    public Viewer(Game g){
+        game = g;
         getContentPane().setPreferredSize(new Dimension(W_WIDTH, W_HEIGHT));
         // setSize(WWIDTH, WHEIGHT);
         canvas = renderer();
@@ -52,10 +53,10 @@ public class Viewer extends JFrame{
         };
     }
 
-    public void repaint(TileNode n){
-        this.n = n;
-        canvas.repaint();
-    }
+    // public void repaint(TileNode n){
+    //     this.n = n;
+    //     canvas.repaint();
+    // }
     
     /** recusivly draws tiles from placed graph */
     public void drawTiles(Graphics g, TileNode node, Set<TileNode> visited){
