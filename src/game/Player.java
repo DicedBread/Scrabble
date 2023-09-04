@@ -12,7 +12,6 @@ public class Player {
         tiles = new ArrayList<Tile>();
     }
 
-    
     public boolean addTile(Tile t){
         if(tiles.size() >= MAX_TILES) return false;
         tiles.add(t);

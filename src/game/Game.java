@@ -14,7 +14,7 @@ public class Game {
     
     // private final Set<String> 
 
-    private List<Tile> tiles;
+    private Stack<Tile> tiles;
     private List<Player> players; 
     private Viewer viewer;
 
@@ -25,7 +25,12 @@ public class Game {
     public Game(Viewer v){
         this.viewer = v;
         this.players = List.of(new Player(), new Player(), new Player(), new Player());
-        tiles = loadTiles(new File("/src/data/letters.csv"));
+        List<Tile> temp = loadTiles(new File("/src/data/letters.csv"));
+        Collections.shuffle(temp);
+        temp.forEach(e -> tiles.add(e));
+
+        
+        distributeTiles(players);
 
         // placed = testGraph();
         // v.repaint(placed);
@@ -35,6 +40,11 @@ public class Game {
         return null;
     }   
     
+    public void distributeTiles(List<Player> p){
+        for(Player player : p){
+            while(player.addTile(tiles.pop())){}
+        }
+    }
 
     /** loads letters to list of playable tiles
      *  csv format letter, points, count 
@@ -60,6 +70,7 @@ public class Game {
                     out.add(new Tile(c, points));
                 }
             }
+            s.close();
         }catch(Exception e) { System.out.println(e); }
         return out;
     }

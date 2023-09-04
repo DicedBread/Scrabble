@@ -1,10 +1,8 @@
 package game;
 import java.util.*;
 
-import Nodes.RefNode;
-import Nodes.PlacedNode;
 
-record Play (String word, int indexOfEPoint, RefNode enterPoint){
+record Play (String word){
     
     // String word;
     // int indexOfEPoint;
