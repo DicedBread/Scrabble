@@ -18,6 +18,10 @@ public class Player {
         return true;
     }
 
+    public boolean hasMaxTiles(){
+        if(tiles.size() >= 7) return true;
+        return false;
+    }
     
     public int tileCount(){
         return tiles.size();

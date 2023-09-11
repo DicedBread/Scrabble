@@ -14,7 +14,7 @@ public class Game {
     
     // private final Set<String> 
 
-    private Stack<Tile> tiles;
+    private List<Tile> tiles;
     private List<Player> players; 
     private Viewer viewer;
 
@@ -25,12 +25,13 @@ public class Game {
     public Game(Viewer v){
         this.viewer = v;
         this.players = List.of(new Player(), new Player(), new Player(), new Player());
-        List<Tile> temp = loadTiles(new File("/src/data/letters.csv"));
-        Collections.shuffle(temp);
-        temp.forEach(e -> tiles.add(e));
+        tiles = loadTiles(new File("src/data/letters.csv"));
+        Collections.shuffle(tiles);
 
-        
+            
         distributeTiles(players);
+
+
 
         // placed = testGraph();
         // v.repaint(placed);
@@ -42,7 +43,10 @@ public class Game {
     
     public void distributeTiles(List<Player> p){
         for(Player player : p){
-            while(player.addTile(tiles.pop())){}
+            while(!player.hasMaxTiles()){
+                player.addTile(tiles.get(tiles.size() - 1));
+                tiles.remove(tiles.size() - 1);
+            }
         }
     }
 

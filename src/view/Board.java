@@ -1,8 +1,9 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Board extends JPanel{
     private final int CELL_DIMEN = 15; 
@@ -11,6 +12,8 @@ public class Board extends JPanel{
     @Override
     public void paint(Graphics g) {
         super.paint(g);
+        setPreferredSize(new Dimension(getWidth(), getWidth()));
+
         paintLines(g);
     }
 
